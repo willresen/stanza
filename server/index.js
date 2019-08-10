@@ -6,14 +6,14 @@ const db = require('../database/index.js');
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/api/songs/:user', (req, res) => {
-  db.retrieve(req.params.user)
+app.get('/api/songs/:author', (req, res) => {
+  db.retrieve(req.params.author)
     .then(results => res.send(results));
-})
+});
 
 app.post('/api/songs', (req, res) => {
   db.insert(req.body)
     .then(result => res.send(result));
-})
+});
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
