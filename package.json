@@ -1,0 +1,21 @@
+{
+  "name": "stanza",
+  "version": "1.0.0",
+  "description": "A webtool for the composition and analyzation of lyrics/poetry",
+  "main": "index.js",
+  "repository": "https://github.com/willresen/stanza.git",
+  "author": "Will Resen <willresen@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nano": "^8.1.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "jest": "^24.8.0",
+    "webpack": "^4.39.1"
+  }
+}
