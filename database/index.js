@@ -1,24 +1,23 @@
-const nano = require('nano')('http://localhost:5984');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/stanza', {useNewUrlParser: true});
 
-let songs;
+const songSchema = new mongoose.Schema({
+  author: 'string',
+  title: 'string',
+  text: 'string'
+});
 
-nano.db.get('songs')
-  .catch(err => nano.db.create('songs'))
-  .then(() => songs = nano.db.use('songs'))
-  .then(() => songs.list())
-  .then(results => console.log(results))
+const Song = mongoose.model('Song', songSchema);
 
 const insert = (song) => {
-  return songs.insert(song, null);
-};
+  return Song.create(song);
+}
+
+const retrieve = (author) => {
+  return Song.find({author: author});
+}
 
 module.exports = {
-  insert: insert
-};
-
-
-
-
-
-
-
+  insert: insert,
+  retrieve: retrieve
+}
