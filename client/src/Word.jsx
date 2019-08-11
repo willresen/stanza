@@ -1,10 +1,29 @@
 import React from 'react';
 
-const Word = ({ word, count, highlight, handleClick }) => {
-  const color = count > 1 ? 'red' : 'black';
-  const bgColor = highlight ? 'green' : 'transparent';
+class Word extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hovered: false
+    }
+    this.handleMouseHover = this.handleMouseHover.bind(this);
+  }
 
-  return <span onClick={handleClick} style={{backgroundColor: bgColor, color: color}}>{word}</span>
+  handleMouseHover(e) {
+    this.setState({hovered: !this.state.hovered});
+  }
+
+  render() {
+    const color = this.props.count > 1 ? 'red' : 'black';
+    const bgColor = this.props.highlight ? 'green' : 'transparent';
+
+    return (<span
+      onClick={this.props.handleClick}
+      style={{ backgroundColor: bgColor, color: color }}
+      onMouseEnter={this.handleMouseHover}
+      onMouseLeave={this.handleMouseHover}>{this.props.word}
+    </span>)
+  }
 }
 
 export default Word;

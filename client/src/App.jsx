@@ -40,7 +40,6 @@ class App extends React.Component {
         related = relatedWords;
       })
     this.setState({ rhymes: rhymes, related: related, selected: word});
-    console.log('Fetched!');
   }
 
   count(words) {
@@ -63,7 +62,8 @@ class App extends React.Component {
           rhymes={this.state.rhymes}
           related={this.state.related}
           unique={this.state.unique}
-          selected={this.state.selected} />
+          selected={this.state.selected}
+        />
       </div>
     );
   };
