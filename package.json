@@ -1,6 +1,11 @@
 {
   "name": "stanza",
   "version": "1.0.0",
+  "babel": {
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
+  },
   "description": "A webtool for the composition and analyzation of lyrics/poetry",
   "main": "index.js",
   "repository": "https://github.com/willresen/stanza.git",
@@ -11,6 +16,7 @@
     "build:dev": "webpack -dw"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.6.9",
     "react": "^16.9.0",
@@ -20,8 +26,10 @@
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.5.5",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "jest": "^24.8.0",
