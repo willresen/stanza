@@ -1,7 +1,10 @@
 import React from 'react';
 
-const Word = ({ word, count, pool }) => {
-  return count > 1 ? <span style={{color: 'red'}}>{word} </span> : <span>{word} </span>;
+const Word = ({ word, count, highlight, handleClick }) => {
+  const color = count > 1 ? 'red' : 'black';
+  const bgColor = highlight ? 'green' : 'transparent';
+
+  return <span onClick={handleClick} style={{backgroundColor: bgColor, color: color}}>{word}</span>
 }
 
 export default Word;

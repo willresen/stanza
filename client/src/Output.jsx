@@ -17,16 +17,32 @@ class Output extends React.Component {
   }
 
   analyze(sentence) {
-    console.log(sentence);
+    let rhymes = this.props.rhymes[0] ? this.props.rhymes[0] : [];
+    let highlight = false;
+
     return (
-    <p>{
-      sentence.split(' ')
-        .map(word => <Word word={word} count={this.props.unique[word]} pool={this.props.pool} />)
-    }</p>
+      <p>{
+        sentence.split(' ').map(word => {
+
+          if(rhymes.includes(word) || this.props.selected === word) {
+            highlight = true;
+          } else {
+            highlight = false;
+          }
+
+          return (<span><Word
+            handleClick={this.props.handleClick}
+            word={word}
+            count={this.props.unique[word]}
+            highlight={highlight}
+          /><span> </span></span>)
+        })
+      }</p>
     )
   }
 
   render() {
+    console.log('RENDERING')
     return (
       <div id="output">
         {this.state.text.map(line => this.analyze(line))}

@@ -9,29 +9,38 @@ class App extends React.Component {
     super(props);
     this.state = {
       text: [],
-      pool: [],
-      unique: {}
+      rhymes: [],
+      related: [],
+      unique: {},
+      selected: '',
     }
-    this.fetchDocuments = this.fetchDocuments.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.count = this.count.bind(this);
   };
 
-  async handleSubmit(text) {
+  handleSubmit(text) {
     let words = text.replace(/\n/ig, ' ').split(' ');
     let uniqueWords = this.count(words);
+    this.setState({text: text, unique: uniqueWords});
+  }
 
-    for (let word in uniqueWords) {
-      Promise.all([
-        fetch(`https://api.datamuse.com/words?rel_nry=${word}`).then(result => result.json()),
-        fetch(`https://api.datamuse.com/words?rel_rhy=${word}`).then(result => result.json()),
-        fetch(`https://api.datamuse.com/words?rel_syn=${word}`).then(result => result.json())
-      ])
-        .then(([pureRhymes, slantRhymes, relatedWords]) => {
-          this.setState({ pool: { pureRhymes, slantRhymes, relatedWords }, text: text, unique: uniqueWords });
-        })
-    }
+  async handleClick(e) {
+    let word = e.target.innerText;
+    let rhymes = [];
+    let related;
 
+    await Promise.all([
+      fetch(`https://api.datamuse.com/words?rel_rhy=${word}&max=1000`).then(result => result && result.json()),
+      fetch(`https://api.datamuse.com/words?rel_nry=${word}&max=1000`).then(result => result && result.json()),
+      fetch(`https://api.datamuse.com/words?rel_syn=${word}&max=1000`).then(result => result && result.json())
+    ])
+      .then(([pureRhymes, slantRhymes, relatedWords]) => {
+        rhymes.push(pureRhymes.map(rhyme => rhyme.word).concat(slantRhymes.map(rhyme => rhyme.word)));
+        related = relatedWords;
+      })
+    this.setState({ rhymes: rhymes, related: related, selected: word});
+    console.log('Fetched!');
   }
 
   count(words) {
@@ -47,8 +56,14 @@ class App extends React.Component {
     return (
       <div id="main">
         <Sidebar />
-        <Editor handleSubmit={this.handleSubmit}/>
-        <Output text={this.state.text} pool={this.state.pool} unique={this.state.unique}/>
+        <Editor handleSubmit={this.handleSubmit} />
+        <Output
+          handleClick={this.handleClick}
+          text={this.state.text}
+          rhymes={this.state.rhymes}
+          related={this.state.related}
+          unique={this.state.unique}
+          selected={this.state.selected} />
       </div>
     );
   };
