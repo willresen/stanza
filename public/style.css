@@ -59,7 +59,6 @@ html, body, #app {
 #output {
   position: relative;
   left: 350px;
-  border: solid yellow 1px;
   height: 100%;
   width: 50%;
 }
