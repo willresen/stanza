@@ -17,10 +17,10 @@ class Editor extends React.Component {
     return (
       <div id="workspace">
         <div id="tools">
-          <button onClick={() => this.props.handleSubmit(this.state.text)}>Analyze</button>
+          <button id="analyze" onClick={() => this.props.handleSubmit(this.state.text)}>Analyze</button>
         </div>
         <div id="editor">
-          <textarea className="text" value={this.state.text} onChange={this.handleChange}></textarea>
+          <textarea className="text" value={this.state.text} onChange={this.handleChange} spellcheck="false"></textarea>
         </div>
       </div>
     );
