@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar.jsx';
 import Editor from './Editor.jsx';
 import Output from './Output.jsx';
+import OtherWords from './OtherWords.jsx';
 
 
 class App extends React.Component {
@@ -20,13 +21,13 @@ class App extends React.Component {
   };
 
   handleSubmit(text) {
-    let words = text.replace(/\n/ig, ' ').split(' ');
+    let words = text.replace(/\n/ig, ' ').replace(/[.,?!()]/ig, '').split(' ');
     let uniqueWords = this.count(words);
     this.setState({text: text, unique: uniqueWords});
   }
 
   async handleClick(e) {
-    let word = e.target.innerText;
+    let word = e.target.innerText.replace(/[.,?!()]/gi, '');
     let rhymes = [];
     let related;
 
@@ -60,10 +61,10 @@ class App extends React.Component {
           handleClick={this.handleClick}
           text={this.state.text}
           rhymes={this.state.rhymes}
-          related={this.state.related}
           unique={this.state.unique}
           selected={this.state.selected}
         />
+        <OtherWords rhymes={this.state.rhymes} related={this.state.related}/>
       </div>
     );
   };
