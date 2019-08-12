@@ -20,7 +20,7 @@ html, body, #app {
   position: absolute;
   top: 0;
   background-color: rgb(65, 65, 65);
-  box-shadow: -2px 1px 20px 0px black;
+  box-shadow: -4px 3px 20px 0px black
 }
 
 #workspace {
@@ -29,7 +29,6 @@ html, body, #app {
   flex-flow: column;
   left: 240px;
   width: 500px;
-  box-shadow: -1px 6px 100px 0px black;
   overflow-y: auto;
 }
 
@@ -41,6 +40,7 @@ html, body, #app {
 }
 
 .text {
+  border: none;
   overflow-y: auto;
   font-size: 16px;
   font-weight: 100;
