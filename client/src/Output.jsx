@@ -23,10 +23,10 @@ class Output extends React.Component {
         return (<span><Word
           handleClick={this.props.handleClick}
           word={word}
-          count={this.props.unique[word.replace(/[.,?!()]/, '')]}
-          highlight={rhymes.includes(word.replace(/[.,?!()]/, '')) ||
-            this.props.selected === word.replace(/[.,?!()]/, '')}
-          rhymes={rhymes}
+          count={this.props.unique[word.replace(/[^a-zA-Z ]/g, '')]}
+          highlight={rhymes.includes(word.replace(/[^a-zA-Z ]/g, '')) ||
+            this.props.selected === word.replace(/[^a-zA-Z ]/g, '')}
+          showRepetition={this.props.showRepetition}
         /><span> </span></span>)
       })}</p>);
     })}</div>);
