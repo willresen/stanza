@@ -14,7 +14,7 @@ class Word extends React.Component {
   }
 
   render() {
-    const color = this.props.count > 1 ? 'red' : 'black';
+    const color = this.props.count > 1 ? 'red' : 'white';
     const bgColor = this.props.highlight ? 'green' : 'transparent';
 
     return (<span
