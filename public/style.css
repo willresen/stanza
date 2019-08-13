@@ -39,8 +39,6 @@ html, body, #app {
   width: 500px;
   overflow-y: auto;
   box-shadow: -7px -2px 20px 0px #0000004a;
-
-
 }
 
 #editor{
@@ -202,6 +200,11 @@ label {
 
 #tools button:hover {
   background-color: gray;
+}
+
+button:focus {
+  outline-color: transparent;
+  outline-style: none;
 }
 
 /* latin-ext */
