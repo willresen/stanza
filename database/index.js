@@ -13,8 +13,8 @@ const insert = (song) => {
   return Song.create(song);
 }
 
-const retrieve = (author) => {
-  return Song.find({author: author});
+const retrieve = (id) => {
+  return Song.find({_id: id});
 }
 
 module.exports = {
