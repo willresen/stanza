@@ -20,14 +20,15 @@ const Sidebar = (props) => {
           </input>
           <button type="submit">Save</button><br/>
         </form>
-        <form id="load">
+        <textarea id="save_id" value={props._id} readOnly></textarea>
+        <form id="load" onSubmit={props.handleLoad}>
           <input type="text"
             name="load_id"
-            placeholder="Content ID"
+            placeholder="Paste your Content ID here"
             onChange={props.handleChange}
             required>
           </input>
-          <button onClick={props.handleLoad}>Load</button><br/>
+          <button type="submit">Load</button><br/>
         </form>
       </div>
       <div id="controls">
