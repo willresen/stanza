@@ -7,8 +7,8 @@ class Output extends React.Component {
     this.state = {
       display: false,
       text: []
-    }
-  }
+    };
+  };
 
   componentDidUpdate(prev) {
     if (JSON.stringify(prev.text) !== JSON.stringify(this.props.text)) {
@@ -17,7 +17,7 @@ class Output extends React.Component {
   };
 
   render() {
-    let rhymes = this.props.rhymes[0] || [];
+    let rhymes = (this.props.rhymes[0] && this.props.rhymes[0].map(rhyme => rhyme.word)) || [];
     return this.state.display && (<div id="output">{this.state.text.map(sentence => {
       return (<p>{sentence.split(' ').map(word => {
         return (<span><Word
