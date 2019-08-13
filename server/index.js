@@ -7,8 +7,8 @@ const db = require('../database/index.js');
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/api/songs/:author', (req, res) => {
-  db.retrieve(req.params.author)
+app.get('/api/songs', (req, res) => {
+  db.retrieve(req.query.id)
     .then(results => res.send(results));
 });
 
