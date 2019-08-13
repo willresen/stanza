@@ -8,19 +8,19 @@ const Sidebar = (props) => {
         <form id="save" onSubmit={props.handleSave}>
           <input type="text"
             name="title"
-            placeholder="Title"
+            placeholder="Enter a Title"
             onChange={props.handleChange}
             required>
           </input>
           <input type="text"
             name="author"
-            placeholder="Author"
+            placeholder="Enter an Author"
             onChange={props.handleChange}
             required >
           </input>
           <button type="submit">Save</button><br/>
         </form>
-        <textarea id="save_id" value={props._id} readOnly></textarea>
+        {props._id && <textarea id="save_id" value={props._id} readOnly></textarea>}
         <form id="load" onSubmit={props.handleLoad}>
           <input type="text"
             name="load_id"
@@ -32,36 +32,31 @@ const Sidebar = (props) => {
         </form>
       </div>
       <div id="controls">
-        <input type="checkbox"
+        <label><input type="checkbox"
           value="showRepetition"
           onChange={props.handleToggle}
           checked={props.showRepetition}>
-        </input>
-        <span>Mark repeated words</span><br/>
-        <input type="checkbox"
+        </input> Mark repeated words</label><br/>
+        <label><input type="checkbox"
           value="highlightPerfectRhymes"
           onChange={props.handleToggle}
           checked={props.highlightPerfectRhymes}>
-        </input>
-        <span>Highlight perfect rhymes</span><br/>
-        <input type="checkbox"
+        </input>Highlight perfect rhymes</label><br/>
+        <label><input type="checkbox"
           value="highlightSlantRhymes"
           onChange={props.handleToggle}
           checked={props.highlightSlantRhymes}>
-        </input>
-        <span>Highlight slant rhymes</span><br/><br/><br/>
-        <input type="checkbox"
+        </input>Highlight slant rhymes</label><br/><br/><br/>
+        <label><input type="checkbox"
           value="showCommonPhrases"
           onChange={props.handleToggle}
           checked={props.showCommonPhrases}>
-        </input>
-        <span>Show common phrases</span><br/>
-        <input type="checkbox"
+        </input>Show common phrases</label><br/>
+        <label><input type="checkbox"
           value="showSyllableCount"
           onChange={props.handleToggle}
           checked={props.showSyllableCount}>
-        </input>
-        <span>Show syllable count</span><br/>
+        </input>Show syllable count</label><br/>
       </div>
     </div>
   );
