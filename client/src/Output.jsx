@@ -20,12 +20,12 @@ class Output extends React.Component {
     let rhymes = (this.props.rhymes[0] && this.props.rhymes[0].map(rhyme => rhyme.word)) || [];
     return this.state.display && (<div id="output">{this.state.text.map(sentence => {
       return (<p>{sentence.split(' ').map(word => {
+        const sanitizedWord = word.replace(/[^a-zA-Z ]/g, '');
         return (<span><Word
           handleClick={this.props.handleClick}
           word={word}
-          count={this.props.unique[word.replace(/[^a-zA-Z ]/g, '')]}
-          highlight={rhymes.includes(word.replace(/[^a-zA-Z ]/g, '')) ||
-            this.props.selected === word.replace(/[^a-zA-Z ]/g, '')}
+          count={this.props.unique[sanitizedWord]}
+          highlight={rhymes.includes(sanitizedWord) || this.props.selected === sanitizedWord}
           showRepetition={this.props.showRepetition}
         /><span> </span></span>)
       })}</p>);
