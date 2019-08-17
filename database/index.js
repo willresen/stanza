@@ -11,13 +11,13 @@ const Song = mongoose.model('Song', songSchema);
 
 const insert = (song) => {
   return Song.create(song);
-}
+};
 
 const retrieve = (id) => {
   return Song.find({_id: id});
-}
+};
 
 module.exports = {
   insert: insert,
   retrieve: retrieve
-}
+};
