@@ -4,7 +4,6 @@ import Editor from './Editor.jsx';
 import Output from './Output.jsx';
 import OtherWords from './OtherWords.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -51,7 +50,7 @@ class App extends React.Component {
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
   handleSubmit(text) {
     let words = text.replace(/\n/ig, ' ').replace(/[^a-zA-Z ]/g, '').split(' ');
