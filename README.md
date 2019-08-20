@@ -1,2 +1,2 @@
 # stanza
-A webtool for the composition and analyzation of lyrics/poetry
+A webtool to assist with lyric composition and poetry.
