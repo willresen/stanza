@@ -31,8 +31,9 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.5.5",
     "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
     "enzyme": "^3.10.0",
-    "jest": "^24.8.0",
+    "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
